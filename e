@@ -13,8 +13,15 @@
 # Note that it is assumed that all relevant config and keys are set in
 # ~/.ssh on all relevant machines to make this a seamless operation.
 
+# Decide if we should wait. If we're called as e we don't want, if we're
+# called as anything else we wait.
+if [ "$(basename $0)" = "e" ]
+then
+    WAIT="--no-wait"
+fi
+
 # How to call on the Emacs client.
-EMACS_CLIENT="emacsclient --alternate-editor=emacs --no-wait"
+EMACS_CLIENT="emacsclient --alternate-editor=emacs $WAIT"
 
 # Figure out the name/IP of the remote machine.
 function remote_machine {
