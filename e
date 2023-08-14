@@ -55,7 +55,7 @@ function remote_emacs {
 
 # Edit a file locally.
 function local_emacs {
-    if pgrep -q [Ee]macs;
+    if pgrep -q "[Ee]macs";
     then
         $EMACS_CLIENT "$@"
     else
